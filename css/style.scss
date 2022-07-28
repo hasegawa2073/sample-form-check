@@ -8,3 +8,33 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.form {
+  &__title {
+    @include fontBase;
+    font-size: 2.4rem;
+    color: $cBlack;
+  }
+  &__label {
+    @include fontBase;
+    font-size: 1.6rem;
+    color: $cBlack;
+  }
+  &__require {
+    color: $cRequire;
+  }
+  &__input {
+    &::placeholder {
+      @include fontBase;
+      font-size: 1.6rem;
+      color: $cPlaceholder;
+    }
+  }
+  &__submit {
+    .submit {
+      @include fontBase;
+      font-size: 1.6rem;
+      color: $cWhite;
+    }
+  }
+}
