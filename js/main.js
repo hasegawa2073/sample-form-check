@@ -7,8 +7,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const inputsArray = Array.from(inputs);
 
   // 未入力のitemにemptyクラスを付与
-  const addClassEmpty = function (array, i) {
-    array[i].classList.add('empty');
+  const addClassEmpty = function (items, i) {
+    items[i].classList.add('empty');
+  };
+
+  // itemからemptyクラスを削除
+  const removeClassEmpty = function (items) {
+    items.forEach((val) => {
+      val.classList.remove('empty');
+    });
   };
 
   // input、textareaの未入力チェック
@@ -21,4 +28,5 @@ document.addEventListener('DOMContentLoaded', function () {
   };
   checkEmptyText(inputsArray[0]);
   addClassEmpty(itemsArray, 0);
+  removeClassEmpty(itemsArray, 0);
 });
