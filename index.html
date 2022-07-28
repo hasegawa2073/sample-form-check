@@ -10,28 +10,66 @@
   <body>
     <main class="main">
       <form class="form" action="#" method="post">
-        <h2>お問い合わせフォーム</h2>
+        <h2 class="form__title">お問い合わせフォーム</h2>
         <div class="form__item">
-          <label for="name">お名前</label>
-          <input type="text" name="name" id="name" />
+          <label for="name"
+            >お名前<span class="form__item-require">*</span></label
+          >
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="お名前をご入力ください"
+          />
         </div>
         <div class="form__item">
-          <label for="kana">ふりがな</label>
-          <input type="text" name="kana" id="kana" />
+          <label for="kana"
+            >ふりがな<span class="form__item-require">*</span></label
+          >
+          <input
+            type="text"
+            name="kana"
+            id="kana"
+            placeholder="ふりがなをご入力ください"
+          />
         </div>
         <div class="form__item">
-          <label for="tel">電話番号</label>
-          <input type="tel" name="tel" id="tel" />
+          <label for="tel"
+            >電話番号<span class="form__item-require">*</span></label
+          >
+          <input
+            type="tel"
+            name="tel"
+            id="tel"
+            placeholder="電話番号をご入力ください"
+          />
         </div>
         <div class="form__item">
-          <label for="email">メールアドレス</label>
-          <input type="email" name="email" id="email" />
+          <label for="email"
+            >メールアドレス<span class="form__item-require">*</span></label
+          >
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="メールアドレスをご入力ください"
+          />
         </div>
         <div class="form__item">
-          <label for="content">お問合せ内容</label>
-          <textarea name="content" id="content" cols="30" rows="10"></textarea>
+          <label for="content"
+            >お問合せ内容<span class="form__item-require">*</span></label
+          >
+          <textarea
+            name="content"
+            id="content"
+            cols="30"
+            rows="10"
+            placeholder="ご自由にご入力ください"
+          ></textarea>
         </div>
-        <input type="submit" value="送信内容を確認する" />
+        <div class="form__submit">
+          <input type="submit" value="送信内容を確認する" />
+        </div>
       </form>
     </main>
     <script src="js/main.js"></script>
