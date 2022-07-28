@@ -50,6 +50,7 @@ h2 {
   color: #000000;
 }
 .form__label {
+  margin-bottom: 8px;
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 500;
   font-size: 1.6rem;

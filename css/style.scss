@@ -49,6 +49,7 @@ h2 {
     color: $cBlack;
   }
   &__label {
+    margin-bottom: 8px;
     @include fontBase;
     font-size: $sText;
     color: $cBlack;
