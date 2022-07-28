@@ -27,19 +27,19 @@ h2 {
     margin: 40px auto;
     padding: 0 8%;
     max-width: 500px;
-  }
-  &__empty {
-    .form__label {
-      position: relative;
-      &::after {
-        content: '必須項目です';
-        margin-left: 16px;
-        display: inline-block;
-        color: $cRequire;
+    &.empty {
+      .form__label {
+        position: relative;
+        &::after {
+          content: '必須項目です';
+          margin-left: 16px;
+          display: inline-block;
+          color: $cRequire;
+        }
       }
-    }
-    .form__input {
-      border: 2px solid $cRequire;
+      .form__input {
+        border: 2px solid $cRequire;
+      }
     }
   }
   &__title {
