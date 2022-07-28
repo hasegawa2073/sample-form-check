@@ -6,6 +6,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const inputs = document.querySelectorAll('.form__input');
   const inputsArray = Array.from(inputs);
 
+  // 未入力のitemにemptyクラスを付与
+  const addClassEmpty = function (array, i) {
+    array[i].classList.add('empty');
+  };
+
   // input、textareaの未入力チェック
   const checkEmptyText = function (input) {
     if (input.textContent == '') {
@@ -15,4 +20,5 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
   checkEmptyText(inputsArray[0]);
+  addClassEmpty(itemsArray, 0);
 });
