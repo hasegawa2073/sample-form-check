@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   'use strict';
 
+  const form = document.querySelector('.form');
   const items = document.querySelectorAll('.form__item');
   const itemsArray = Array.from(items);
   const inputs = document.querySelectorAll('.form__input');
@@ -9,30 +10,29 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 未入力のitemにemptyクラスを付与
   const addClassEmpty = function (items, i) {
-    console.log(items[i]);
     items[i].classList.add('empty');
   };
 
-  // itemからemptyクラスを削除
-  const removeClassEmpty = function (items) {
-    items.forEach((val) => {
-      val.classList.remove('empty');
-    });
+  // 入力されているitemからemptyクラスを削除
+  const removeClassEmpty = function (items, i) {
+    items[i].classList.remove('empty');
   };
 
   // input、textareaの未入力チェック
   const checkEmptyText = function (...inputs) {
     for (let input of inputs) {
       input.forEach((val, i) => {
-        if (val.textContent == '') {
-          console.log('未入力です');
+        if (val.value == '') {
           addClassEmpty(itemsArray, i);
         } else {
-          console.log('入力されている');
-          removeClassEmpty(itemsArray);
+          removeClassEmpty(itemsArray, i);
         }
       });
     }
   };
-  checkEmptyText(inputsArray);
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    checkEmptyText(e.path[0].querySelectorAll('.form__input'));
+  });
 });
