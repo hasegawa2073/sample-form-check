@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   };
 
-  // input、textareaの未入力チェック
+  // 個別にinput、textareaの未入力チェック
   const checkEmptyText = function (target) {
     if (target.value == '') {
       console.log('未入力');
@@ -42,9 +42,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
+  // すべてのinput、textareaの未入力チェック
+  const checkEmptyTextAll = function (targets) {
+    for (let i = 0; i < targets.length; i++) {
+      checkEmptyText(targets[i].querySelector('.form__input'));
+    }
+  };
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    console.log(e);
+    checkEmptyTextAll(e.target.querySelectorAll('.form__item'));
   });
   form.addEventListener('focusout', function (e) {
     checkEmptyText(e.target);
