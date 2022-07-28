@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const itemsArray = Array.from(items);
   const inputs = document.querySelectorAll('.form__input');
   const inputsArray = Array.from(inputs);
-  const submit = document.querySelector('.submit');
 
   const inputsAssocArray = new Array();
   inputsArray.map((val) => {
@@ -49,9 +48,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
+  // emptyクラスがついていたら返す
+  const returnEmpty = function (target) {
+    if (target.classList.contains('empty')) {
+      return target;
+    }
+  };
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    checkEmptyTextAll(e.target.querySelectorAll('.form__item'));
+    checkEmptyTextAll(itemsArray);
   });
   form.addEventListener('focusout', function (e) {
     checkEmptyText(e.target);
