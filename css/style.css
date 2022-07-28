@@ -30,16 +30,16 @@ h2 {
   padding: 0 8%;
   max-width: 500px;
 }
-.form__not-input .form__label {
+.form__empty .form__label {
   position: relative;
 }
-.form__not-input .form__label::after {
+.form__empty .form__label::after {
   content: "必須項目です";
   margin-left: 16px;
   display: inline-block;
   color: #ff776b;
 }
-.form__not-input .form__input {
+.form__empty .form__input {
   border: 2px solid #ff776b;
 }
 .form__title {
