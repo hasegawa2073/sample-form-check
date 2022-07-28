@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   font-size: 62.5%;
 }
@@ -7,6 +8,22 @@ body {
   padding: 0;
 }
 
+.form__item {
+  display: flex;
+  flex-direction: column;
+}
+.form__not-input .form__label {
+  position: relative;
+}
+.form__not-input .form__label::after {
+  content: "必須項目です";
+  margin-left: 16px;
+  display: inline-block;
+  color: #ff776b;
+}
+.form__not-input .form__input {
+  border: 2px solid #ff776b;
+}
 .form__title {
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 500;
@@ -21,6 +38,13 @@ body {
 }
 .form__require {
   color: #ff776b;
+}
+.form__input {
+  padding: 16px 24px;
+  font-size: 1.6rem;
+  background-color: #f6f6f6;
+  border: none;
+  border-radius: 10px;
 }
 .form__input::-moz-placeholder {
   font-family: "Noto Sans JP", sans-serif;
@@ -40,9 +64,20 @@ body {
   font-size: 1.6rem;
   color: #737373;
 }
+.form__input:focus-within {
+  font-size: 1.6rem;
+}
+.form__submit {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .form__submit .submit {
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 500;
   font-size: 1.6rem;
   color: #ffffff;
+  background-color: #6b6b6b;
+  border-radius: 100vw;
+  cursor: pointer;
 }/*# sourceMappingURL=style.css.map */
