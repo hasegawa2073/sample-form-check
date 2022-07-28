@@ -8,31 +8,45 @@ document.addEventListener('DOMContentLoaded', function () {
   const inputsArray = Array.from(inputs);
   const submit = document.querySelector('.submit');
 
+  const inputsAssocArray = new Array();
+  inputsArray.map((val) => {
+    inputsAssocArray[val.id] = val;
+  });
+
   // 未入力のitemにemptyクラスを付与
-  const addClassEmpty = function (items, i) {
-    items[i].classList.add('empty');
+  const addClassEmpty = function (key) {
+    itemsArray.map((val) => {
+      if (val.classList.contains(key)) {
+        val.classList.add('empty');
+      }
+    });
   };
 
   // 入力されているitemからemptyクラスを削除
-  const removeClassEmpty = function (items, i) {
-    items[i].classList.remove('empty');
+  const removeClassEmpty = function (key) {
+    itemsArray.map((val) => {
+      if (val.classList.contains(key)) {
+        val.classList.remove('empty');
+      }
+    });
   };
 
   // input、textareaの未入力チェック
-  const checkEmptyText = function (...inputs) {
-    for (let input of inputs) {
-      input.forEach((val, i) => {
-        if (val.value == '') {
-          addClassEmpty(itemsArray, i);
-        } else {
-          removeClassEmpty(itemsArray, i);
-        }
-      });
+  const checkEmptyText = function (target) {
+    if (target.value == '') {
+      console.log('未入力');
+      addClassEmpty(target.id);
+    } else {
+      console.log('入力されている');
+      removeClassEmpty(target.id);
     }
   };
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
-    checkEmptyText(e.path[0].querySelectorAll('.form__input'));
+    console.log(e);
+  });
+  form.addEventListener('focusout', function (e) {
+    checkEmptyText(e.target);
   });
 });
