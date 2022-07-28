@@ -8,11 +8,25 @@ body {
   margin: 0;
   padding: 0;
 }
+h2 {
+  margin: 0;
+}
 
+.main {
+  background-color: $cBase;
+}
 .form {
+  margin: 0 auto;
+  padding: 80px 0;
+  max-width: 1000px;
+  width: 90%;
+  background-color: $cWhite;
   &__item {
     display: flex;
     flex-direction: column;
+    margin: 40px auto;
+    padding: 0 8%;
+    max-width: 500px;
   }
   &__not-input {
     .form__label {
@@ -29,6 +43,7 @@ body {
     }
   }
   &__title {
+    text-align: center;
     @include fontBase;
     font-size: $sTitle;
     color: $cBlack;
@@ -68,5 +83,11 @@ body {
       border-radius: 100vw;
       cursor: pointer;
     }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .form {
+    width: 100%;
   }
 }
