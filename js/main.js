@@ -48,13 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
-  // emptyクラスがついていたら返す
-  const returnEmpty = function (target) {
-    if (target.classList.contains('empty')) {
-      return target;
-    }
-  };
-
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     checkEmptyTextAll(itemsArray);
