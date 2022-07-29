@@ -15,18 +15,32 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 未入力のitemにemptyクラスを付与
   const addClassEmpty = function (key) {
-    itemsArray.map((val) => {
+    itemsArray.forEach((val) => {
       if (val.classList.contains(key)) {
         val.classList.add('empty');
       }
     });
   };
-
   // 入力されているitemからemptyクラスを削除
   const removeClassEmpty = function (key) {
-    itemsArray.map((val) => {
+    itemsArray.forEach((val) => {
       if (val.classList.contains(key)) {
         val.classList.remove('empty');
+      }
+    });
+  };
+
+  const addClassErrorFormat = function (key) {
+    itemsArray.forEach((val) => {
+      if (val.classList.contains(key)) {
+        val.classList.add('error-format');
+      }
+    });
+  };
+  const removeClassErrorFormat = function (key) {
+    itemsArray.forEach((val) => {
+      if (val.classList.contains(key)) {
+        val.classList.remove('error-format');
       }
     });
   };
@@ -56,17 +70,34 @@ document.addEventListener('DOMContentLoaded', function () {
     switch (target.id) {
       case 'name':
         if (target.value.match(/^[^ -~｡-ﾟ]+$/)) {
-          console.log('nameのフォーマットが正しい');
+          removeClassErrorFormat(target.id);
+        } else {
+          addClassErrorFormat(target.id);
         }
         break;
       case 'kana':
         if (target.value.match(/^[\u3040-\u309F]+$/)) {
-          console.log('kanaのフォーマットが正しい');
+          removeClassErrorFormat(target.id);
+        } else {
+          addClassErrorFormat(target.id);
         }
         break;
       case 'tel':
         if (target.value.match(/^[0-9]*$/)) {
-          console.log('telのフォーマットが正しい');
+          removeClassErrorFormat(target.id);
+        } else {
+          addClassErrorFormat(target.id);
+        }
+        break;
+      case 'email':
+        if (
+          target.value.match(
+            /^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/
+          )
+        ) {
+          removeClassErrorFormat(target.id);
+        } else {
+          addClassErrorFormat(target.id);
         }
         break;
 
@@ -96,12 +127,11 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   form.addEventListener('submit', function (e) {
-    e.preventDefault();
     resetEmptyCount();
     checkEmptyTextAll(itemsArray);
-    // if (!checkAllFilled()) {
-    //   e.preventDefault();
-    // }
+    if (!checkAllFilled()) {
+      e.preventDefault();
+    }
   });
   form.addEventListener('focusout', function (e) {
     checkEmptyText(e.target);
