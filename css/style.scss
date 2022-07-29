@@ -41,6 +41,20 @@ h2 {
         border: 2px solid $cRequire;
       }
     }
+    &.error-format {
+      .form__label {
+        position: relative;
+        &::after {
+          content: '入力フォーマットが正しくありません';
+          margin-left: 16px;
+          display: inline-block;
+          color: $cRequire;
+        }
+      }
+      .form__input {
+        border: 2px solid $cRequire;
+      }
+    }
   }
   &__title {
     text-align: center;

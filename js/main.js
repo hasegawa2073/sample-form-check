@@ -50,6 +50,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   };
 
+  // フォーマットのチェック
+  const checkFormatText = function (target) {
+    console.log(target);
+    switch (target.id) {
+      case 'name':
+        if (target.value.match(/^[^ -~｡-ﾟ]+$/)) {
+          console.log('nameのフォーマットが正しい');
+        }
+        break;
+      case 'kana':
+        if (target.value.match(/^[\u3040-\u309F]+$/)) {
+          console.log('kanaのフォーマットが正しい');
+        }
+        break;
+      case 'tel':
+        if (target.value.match(/^[0-9]*$/)) {
+          console.log('telのフォーマットが正しい');
+        }
+        break;
+
+      default:
+        break;
+    }
+  };
+
   // 個別にinput、textareaの未入力チェック
   const checkEmptyText = function (target) {
     if (target.value == '') {
@@ -59,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       console.log('入力されている');
       removeClassEmpty(target.id);
+      checkFormatText(target);
     }
   };
 
@@ -70,11 +96,12 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   form.addEventListener('submit', function (e) {
+    e.preventDefault();
     resetEmptyCount();
     checkEmptyTextAll(itemsArray);
-    if (!checkAllFilled()) {
-      e.preventDefault();
-    }
+    // if (!checkAllFilled()) {
+    //   e.preventDefault();
+    // }
   });
   form.addEventListener('focusout', function (e) {
     checkEmptyText(e.target);

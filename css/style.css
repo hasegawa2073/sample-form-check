@@ -42,6 +42,18 @@ h2 {
 .form__item.empty .form__input {
   border: 2px solid #ff776b;
 }
+.form__item.error-format .form__label {
+  position: relative;
+}
+.form__item.error-format .form__label::after {
+  content: "入力フォーマットが正しくありません";
+  margin-left: 16px;
+  display: inline-block;
+  color: #ff776b;
+}
+.form__item.error-format .form__input {
+  border: 2px solid #ff776b;
+}
 .form__title {
   text-align: center;
   font-family: "Noto Sans JP", sans-serif;
