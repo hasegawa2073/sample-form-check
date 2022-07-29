@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const itemsArray = Array.from(items);
   const inputs = document.querySelectorAll('.form__input');
   const inputsArray = Array.from(inputs);
+  let emptyCount = 0;
 
   const inputsAssocArray = new Array();
   inputsArray.map((val) => {
@@ -30,11 +31,31 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   };
 
+  // 未入力の個数を初期化
+  const resetEmptyCount = function () {
+    emptyCount = 0;
+    return emptyCount;
+  };
+
+  // 未入力なら+1カウント
+  const plusEmptyCount = function () {
+    emptyCount++;
+    return emptyCount;
+  };
+
+  // すべてが入力されていたらtrueを返す
+  const checkEmptyIsNone = function () {
+    if (emptyCount === 0) {
+      return true;
+    }
+  };
+
   // 個別にinput、textareaの未入力チェック
   const checkEmptyText = function (target) {
     if (target.value == '') {
       console.log('未入力');
       addClassEmpty(target.id);
+      plusEmptyCount();
     } else {
       console.log('入力されている');
       removeClassEmpty(target.id);
@@ -50,7 +71,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    resetEmptyCount();
     checkEmptyTextAll(itemsArray);
+    if (checkEmptyIsNone()) {
+      console.log('すべて入力されている');
+    } else {
+      console.log('未入力がある');
+    }
   });
   form.addEventListener('focusout', function (e) {
     checkEmptyText(e.target);
