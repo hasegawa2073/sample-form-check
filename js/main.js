@@ -110,11 +110,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // 個別にinput、textareaの未入力チェック
   const checkEmptyText = function (target) {
     if (target.value == '') {
-      console.log('未入力');
       addClassEmpty(target.id);
       plusEmptyCount();
     } else {
-      console.log('入力されている');
       removeClassEmpty(target.id);
       checkFormatText(target);
     }
