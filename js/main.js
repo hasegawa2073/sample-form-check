@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   };
 
+  // フォーマットが不正なときはクラスを追加
   const addClassErrorFormat = function (key) {
     itemsArray.forEach((val) => {
       if (val.classList.contains(key)) {
@@ -37,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   };
+  // フォーマットが正しければクラスを削除
   const removeClassErrorFormat = function (key) {
     itemsArray.forEach((val) => {
       if (val.classList.contains(key)) {
@@ -66,7 +68,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // フォーマットのチェック
   const checkFormatText = function (target) {
-    console.log(target);
     switch (target.id) {
       case 'name':
         if (target.value.match(/^[^ -~｡-ﾟ]+$/)) {
@@ -132,6 +133,9 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!checkAllFilled()) {
       e.preventDefault();
     }
+  });
+  form.addEventListener('input', function (e) {
+    checkFormatText(e.target);
   });
   form.addEventListener('focusout', function (e) {
     checkEmptyText(e.target);
