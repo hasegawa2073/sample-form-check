@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   // すべてが入力されていたらtrueを返す
-  const checkEmptyIsNone = function () {
+  const checkAllFilled = function () {
     if (emptyCount === 0) {
       return true;
     }
@@ -70,13 +70,10 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   form.addEventListener('submit', function (e) {
-    e.preventDefault();
     resetEmptyCount();
     checkEmptyTextAll(itemsArray);
-    if (checkEmptyIsNone()) {
-      console.log('すべて入力されている');
-    } else {
-      console.log('未入力がある');
+    if (!checkAllFilled()) {
+      e.preventDefault();
     }
   });
   form.addEventListener('focusout', function (e) {
